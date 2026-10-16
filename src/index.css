@@ -9,7 +9,7 @@
   }
   
   body {
-    @apply text-dark-900 bg-white font-sans antialiased overflow-x-hidden;
+    @apply text-dark-900 bg-white dark:bg-dark-950 dark:text-neutral-100 font-sans antialiased overflow-x-hidden;
   }
 
   /* Custom Clean Scrollbar */
@@ -26,6 +26,16 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #9CA3AF;
+  }
+
+  html.dark ::-webkit-scrollbar-track {
+    background: #080A0E;
+  }
+  html.dark ::-webkit-scrollbar-thumb {
+    background: #1C2330;
+  }
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background: #2A3446;
   }
 }
 

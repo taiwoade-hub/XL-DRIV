@@ -13,14 +13,18 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
     // 1. Check local storage
-    const saved = localStorage.getItem('xldriv-theme');
-    if (saved === 'light' || saved === 'dark') {
-      return saved;
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('xldriv-theme');
+        if (saved === 'dark') {
+          return 'dark';
+        }
+        if (saved === 'light') {
+          return 'light';
+        }
+      } catch {}
     }
-    // 2. Check system preference
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
+    // Default to clean, modern 'light' mode by default
     return 'light';
   });
 
@@ -31,15 +35,38 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } else {
       root.classList.remove('dark');
     }
-    localStorage.setItem('xldriv-theme', theme);
+    try {
+      localStorage.setItem('xldriv-theme', theme);
+    } catch {}
   }, [theme]);
 
   const toggleTheme = () => {
-    setThemeState(prev => (prev === 'light' ? 'dark' : 'light'));
+    setThemeState(prev => {
+      const nextTheme = prev === 'light' ? 'dark' : 'light';
+      const root = document.documentElement;
+      if (nextTheme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+      try {
+        localStorage.setItem('xldriv-theme', nextTheme);
+      } catch {}
+      return nextTheme;
+    });
   };
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
+    const root = document.documentElement;
+    if (newTheme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    try {
+      localStorage.setItem('xldriv-theme', newTheme);
+    } catch {}
   };
 
   return (

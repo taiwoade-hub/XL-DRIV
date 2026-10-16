@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { BookingModal } from './components/BookingModal';
 import { DriverRegistrationModal } from './components/DriverRegistrationModal';
+import { ThemeToggleFab } from './components/ThemeToggleFab';
 
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
@@ -112,6 +113,9 @@ const MainLayout: React.FC = () => {
         isOpen={isDriverModalOpen}
         onClose={() => setIsDriverModalOpen(false)}
       />
+
+      {/* Floating Theme Quick-Toggle */}
+      <ThemeToggleFab />
     </div>
   );
 };

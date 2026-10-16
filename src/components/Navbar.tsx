@@ -241,17 +241,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
 
           {/* Desktop Action CTAs + Dark Mode Toggle */}
           <div className="hidden sm:flex items-center space-x-3">
-            {/* Dark Mode Toggle Button */}
+            {/* Theme Mode Toggle Button */}
             <button
               onClick={toggleTheme}
-              aria-label="Toggle Dark Mode"
-              className="p-2.5 rounded-xl border border-neutral-200 dark:border-dark-800 bg-neutral-50 dark:bg-dark-900 text-dark-950 dark:text-brand-400 hover:scale-105 active:scale-95 transition-all shadow-sm"
+              aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl border border-neutral-200 dark:border-dark-800 bg-neutral-100/90 dark:bg-dark-900 text-dark-950 dark:text-brand-400 hover:border-brand-500/50 hover:bg-neutral-200/60 dark:hover:bg-dark-850 hover:scale-[1.02] active:scale-[0.98] transition-all text-xs font-bold shadow-sm"
               title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             >
               {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-brand-400" />
+                <>
+                  <Sun className="w-4 h-4 text-brand-400 shrink-0" />
+                  <span className="hidden xl:inline text-neutral-300">Light Mode</span>
+                </>
               ) : (
-                <Moon className="w-4 h-4 text-dark-950" />
+                <>
+                  <Moon className="w-4 h-4 text-dark-950 shrink-0" />
+                  <span className="hidden xl:inline text-dark-900">Dark Mode</span>
+                </>
               )}
             </button>
 
@@ -275,10 +281,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
           <div className="flex items-center lg:hidden space-x-2">
             <button
               onClick={toggleTheme}
-              aria-label="Toggle Dark Mode"
-              className="p-2 rounded-xl border border-neutral-200 dark:border-dark-800 bg-neutral-50 dark:bg-dark-900 text-dark-950 dark:text-brand-400"
+              aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              className="p-2 rounded-xl border border-neutral-200 dark:border-dark-800 bg-neutral-100 dark:bg-dark-900 text-dark-950 dark:text-brand-400 shadow-sm"
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4 text-brand-400" /> : <Moon className="w-4 h-4" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-brand-400" /> : <Moon className="w-4 h-4 text-dark-950" />}
             </button>
 
             <button
@@ -301,6 +308,48 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white dark:bg-dark-950 border-b border-neutral-200 dark:border-dark-800 px-4 pt-3 pb-6 space-y-3 animate-fade-in shadow-xl">
+            {/* Theme Appearance Selector inside Mobile Drawer */}
+            <div className="p-3 rounded-2xl bg-neutral-100/90 dark:bg-dark-900 border border-neutral-200 dark:border-dark-800">
+              <div className="flex items-center justify-between mb-2 px-1">
+                <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                  Theme Appearance
+                </span>
+                <span className="text-xs font-extrabold text-brand-600 dark:text-brand-400">
+                  {theme === 'dark' ? 'Dark Mode Active' : 'Light Mode Active'}
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (theme !== 'light') toggleTheme();
+                  }}
+                  className={`py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-all ${
+                    theme === 'light'
+                      ? 'bg-white text-dark-950 shadow-md border border-neutral-200'
+                      : 'text-neutral-500 hover:text-white hover:bg-dark-800'
+                  }`}
+                >
+                  <Sun className="w-4 h-4 text-brand-500" />
+                  <span>Light Mode</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (theme !== 'dark') toggleTheme();
+                  }}
+                  className={`py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-all ${
+                    theme === 'dark'
+                      ? 'bg-dark-800 text-white shadow-md border border-dark-700'
+                      : 'text-neutral-600 hover:text-dark-950 hover:bg-neutral-200'
+                  }`}
+                >
+                  <Moon className="w-4 h-4 text-brand-400" />
+                  <span>Dark Mode</span>
+                </button>
+              </div>
+            </div>
+
             <div className="space-y-1">
               <Link
                 to="/"
