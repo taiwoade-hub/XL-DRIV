@@ -83,10 +83,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
           <Link to="/" className="flex items-center space-x-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center p-1.5 transition-transform duration-300 group-hover:scale-105">
+            <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-neutral-200/80 dark:border-dark-700 flex items-center justify-center p-1 transition-transform duration-300 group-hover:scale-105 overflow-hidden">
               <img 
-                src="/favicon.png" 
-                alt="XLDriv Logo" 
+                src={`${import.meta.env.BASE_URL}logo.png`} 
+                alt="XL Driv Official Logo" 
                 className="w-full h-full object-contain"
               />
             </div>

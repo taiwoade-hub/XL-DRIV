@@ -28,10 +28,10 @@ export const Footer: React.FC = () => {
           {/* Brand & Mission Column */}
           <div className="lg:col-span-4 space-y-4">
             <Link to="/" className="flex items-center space-x-2.5">
-              <div className="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center p-1.5">
+              <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-neutral-700 flex items-center justify-center p-1 overflow-hidden">
                 <img 
-                  src="/favicon.png" 
-                  alt="XLDriv Logo" 
+                  src={`${import.meta.env.BASE_URL}logo.png`} 
+                  alt="XL Driv Official Logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
