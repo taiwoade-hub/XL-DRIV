@@ -60,7 +60,7 @@ export const SERVICES: ServiceItem[] = [
       'Popular routes: Lagos ↔ Ibadan, Lagos ↔ Benin, Abuja ↔ Kaduna'
     ],
     idealFor: 'Interstate business, family visits, weekend getaways',
-    image: `${base}images/handsome-elegant-man-car-salon (1).jpg`,
+    image: `${base}images/city-to-city.jpg`,
     startingPrice: 'Negotiate custom interstate rate'
   },
   {

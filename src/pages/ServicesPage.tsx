@@ -30,12 +30,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenBooking, onSel
   const [quoteSent, setQuoteSent] = useState(false);
 
   const clearingGallery = [
-    { src: '/images/cl2.png', title: 'Port Clearance Documentation' },
-    { src: '/images/cl3.png', title: 'Container Haulage Trucks' },
-    { src: '/images/cl4.png', title: 'Heavy Cargo Inspection' },
-    { src: '/images/cl5.png', title: 'End-to-End Warehousing' },
-    { src: '/images/cl6.png', title: 'Industrial Transport' },
-    { src: '/images/cl7.png', title: 'Fleet Logistics Coordination' }
+    { src: `${import.meta.env.BASE_URL}images/cl2.png`, title: 'Port Clearance Documentation' },
+    { src: `${import.meta.env.BASE_URL}images/cl3.png`, title: 'Container Haulage Trucks' },
+    { src: `${import.meta.env.BASE_URL}images/cl4.png`, title: 'Heavy Cargo Inspection' },
+    { src: `${import.meta.env.BASE_URL}images/cl5.png`, title: 'End-to-End Warehousing' },
+    { src: `${import.meta.env.BASE_URL}images/cl6.png`, title: 'Industrial Transport' },
+    { src: `${import.meta.env.BASE_URL}images/cl7.png`, title: 'Fleet Logistics Coordination' }
   ];
 
   const handleQuoteSubmit = (e: React.FormEvent) => {

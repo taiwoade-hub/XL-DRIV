@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  Phone, 
-  Menu, 
-  X, 
-  ArrowRight, 
-  ShieldCheck, 
-  Car, 
-  Truck, 
-  Package, 
+import {
+  Phone,
+  Menu,
+  X,
+  ArrowRight,
+  ShieldCheck,
+  Car,
+  Truck,
+  Package,
   ChevronDown,
   Sparkles,
   Sun,
@@ -51,8 +51,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
       <div className="bg-dark-950 text-neutral-300 text-xs border-b border-dark-800 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
           <div className="flex items-center space-x-6">
-            <a 
-              href={`tel:${COMPANY_DETAILS.phonePrimary.replace(/\s+/g, '')}`} 
+            <a
+              href={`tel:${COMPANY_DETAILS.phonePrimary.replace(/\s+/g, '')}`}
               className="flex items-center space-x-2 text-neutral-300 hover:text-brand-500 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-brand-500" />
@@ -73,20 +73,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
       </div>
 
       {/* Main Navigation Bar */}
-      <nav 
-        className={`transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-white/95 dark:bg-dark-950/95 backdrop-blur-md shadow-md py-3 border-b border-neutral-100 dark:border-dark-800' 
+      <nav
+        className={`transition-all duration-300 ${isScrolled
+            ? 'bg-white/95 dark:bg-dark-950/95 backdrop-blur-md shadow-md py-3 border-b border-neutral-100 dark:border-dark-800'
             : 'bg-white dark:bg-dark-950 py-4 border-b border-neutral-100 dark:border-dark-800'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
           <Link to="/" className="flex items-center space-x-2.5 group">
             <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-neutral-200/80 dark:border-dark-700 flex items-center justify-center p-1 transition-transform duration-300 group-hover:scale-105 overflow-hidden">
-              <img 
-                src={`${import.meta.env.BASE_URL}logo.png`} 
-                alt="XL Driv Official Logo" 
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt="XL Driv Official Logo"
                 className="w-full h-full object-contain"
               />
             </div>
@@ -107,13 +106,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center space-x-1">
-            <Link 
-              to="/" 
-              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${
-                isActive('/') 
-                  ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800' 
+            <Link
+              to="/"
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive('/')
+                  ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800'
                   : 'text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-dark-900'
-              }`}
+                }`}
             >
               Home
             </Link>
@@ -123,23 +121,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
               <button
                 onClick={() => setServicesDropdown(!servicesDropdown)}
                 onMouseEnter={() => setServicesDropdown(true)}
-                className={`px-3.5 py-2 rounded-lg text-sm font-semibold inline-flex items-center space-x-1 transition-all ${
-                  isActive('/services') || servicesDropdown
-                    ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800' 
+                className={`px-3.5 py-2 rounded-lg text-sm font-semibold inline-flex items-center space-x-1 transition-all ${isActive('/services') || servicesDropdown
+                    ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800'
                     : 'text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-dark-900'
-                }`}
+                  }`}
               >
                 <span>Services</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${servicesDropdown ? 'rotate-180 text-brand-500' : ''}`} />
               </button>
 
               {servicesDropdown && (
-                <div 
+                <div
                   className="absolute top-full left-0 mt-1 w-72 bg-white dark:bg-dark-900 rounded-2xl shadow-2xl border border-neutral-100 dark:border-dark-800 p-2 z-50 animate-fade-in"
                   onMouseEnter={() => setServicesDropdown(true)}
                 >
-                  <Link 
-                    to="/services#city-rides" 
+                  <Link
+                    to="/services#city-rides"
                     className="flex items-start p-2.5 rounded-xl hover:bg-neutral-50 dark:hover:bg-dark-800 transition-colors group"
                   >
                     <div className="w-9 h-9 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center mr-3 mt-0.5 group-hover:bg-brand-500 group-hover:text-black transition-colors">
@@ -151,8 +148,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
                     </div>
                   </Link>
 
-                  <Link 
-                    to="/services#city-to-city" 
+                  <Link
+                    to="/services#city-to-city"
                     className="flex items-start p-2.5 rounded-xl hover:bg-neutral-50 dark:hover:bg-dark-800 transition-colors group"
                   >
                     <div className="w-9 h-9 rounded-lg bg-neutral-100 dark:bg-dark-800 text-dark-900 dark:text-white flex items-center justify-center mr-3 mt-0.5 group-hover:bg-dark-950 group-hover:text-white transition-colors">
@@ -164,8 +161,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
                     </div>
                   </Link>
 
-                  <Link 
-                    to="/services#courier" 
+                  <Link
+                    to="/services#courier"
                     className="flex items-start p-2.5 rounded-xl hover:bg-neutral-50 dark:hover:bg-dark-800 transition-colors group"
                   >
                     <div className="w-9 h-9 rounded-lg bg-neutral-100 dark:bg-dark-800 text-dark-900 dark:text-white flex items-center justify-center mr-3 mt-0.5 group-hover:bg-dark-950 group-hover:text-white transition-colors">
@@ -177,8 +174,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
                     </div>
                   </Link>
 
-                  <Link 
-                    to="/services#trucks-logistics" 
+                  <Link
+                    to="/services#trucks-logistics"
                     className="flex items-start p-2.5 rounded-xl hover:bg-neutral-50 dark:hover:bg-dark-800 transition-colors group"
                   >
                     <div className="w-9 h-9 rounded-lg bg-neutral-100 dark:bg-dark-800 text-dark-900 dark:text-white flex items-center justify-center mr-3 mt-0.5 group-hover:bg-dark-950 group-hover:text-white transition-colors">
@@ -191,8 +188,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
                   </Link>
 
                   <div className="border-t border-neutral-100 dark:border-dark-800 mt-1 pt-1">
-                    <Link 
-                      to="/services" 
+                    <Link
+                      to="/services"
                       className="block px-3 py-2 text-xs font-semibold text-center text-brand-600 hover:text-black dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-dark-800 rounded-lg transition-colors"
                     >
                       View All 5 Services & Pricing →
@@ -202,13 +199,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
               )}
             </div>
 
-            <Link 
-              to="/for-drivers" 
-              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all relative ${
-                isActive('/for-drivers') 
-                  ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800' 
+            <Link
+              to="/for-drivers"
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all relative ${isActive('/for-drivers')
+                  ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800'
                   : 'text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-dark-900'
-              }`}
+                }`}
             >
               <span>For Drivers</span>
               <span className="ml-1.5 px-1.5 py-0.5 text-[9px] font-bold uppercase bg-brand-500/20 text-brand-700 dark:text-brand-400 rounded-full">
@@ -216,24 +212,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
               </span>
             </Link>
 
-            <Link 
-              to="/about" 
-              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${
-                isActive('/about') 
-                  ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800' 
+            <Link
+              to="/about"
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive('/about')
+                  ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800'
                   : 'text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-dark-900'
-              }`}
+                }`}
             >
               About Us
             </Link>
 
-            <Link 
-              to="/contact" 
-              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${
-                isActive('/contact') 
-                  ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800' 
+            <Link
+              to="/contact"
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive('/contact')
+                  ? 'text-black dark:text-white bg-neutral-100 dark:bg-dark-800'
                   : 'text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-dark-900'
-              }`}
+                }`}
             >
               Contact
             </Link>
@@ -324,11 +318,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
                   onClick={() => {
                     if (theme !== 'light') toggleTheme();
                   }}
-                  className={`py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-all ${
-                    theme === 'light'
+                  className={`py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-all ${theme === 'light'
                       ? 'bg-white text-dark-950 shadow-md border border-neutral-200'
                       : 'text-neutral-500 hover:text-white hover:bg-dark-800'
-                  }`}
+                    }`}
                 >
                   <Sun className="w-4 h-4 text-brand-500" />
                   <span>Light Mode</span>
@@ -338,11 +331,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
                   onClick={() => {
                     if (theme !== 'dark') toggleTheme();
                   }}
-                  className={`py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-all ${
-                    theme === 'dark'
+                  className={`py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-all ${theme === 'dark'
                       ? 'bg-dark-800 text-white shadow-md border border-dark-700'
                       : 'text-neutral-600 hover:text-dark-950 hover:bg-neutral-200'
-                  }`}
+                    }`}
                 >
                   <Moon className="w-4 h-4 text-brand-400" />
                   <span>Dark Mode</span>
@@ -353,25 +345,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
             <div className="space-y-1">
               <Link
                 to="/"
-                className={`block px-3 py-2.5 rounded-xl text-base font-semibold ${
-                  isActive('/') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
-                }`}
+                className={`block px-3 py-2.5 rounded-xl text-base font-semibold ${isActive('/') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
+                  }`}
               >
                 Home
               </Link>
               <Link
                 to="/services"
-                className={`block px-3 py-2.5 rounded-xl text-base font-semibold ${
-                  isActive('/services') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
-                }`}
+                className={`block px-3 py-2.5 rounded-xl text-base font-semibold ${isActive('/services') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
+                  }`}
               >
                 Our Services (City, Interstate, Courier, Trucks)
               </Link>
               <Link
                 to="/for-drivers"
-                className={`block px-3 py-2.5 rounded-xl text-base font-semibold flex items-center justify-between ${
-                  isActive('/for-drivers') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
-                }`}
+                className={`block px-3 py-2.5 rounded-xl text-base font-semibold flex items-center justify-between ${isActive('/for-drivers') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
+                  }`}
               >
                 <span>For Drivers</span>
                 <span className="px-2 py-0.5 text-xs font-bold bg-brand-500 text-black rounded-full">
@@ -380,17 +369,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
               </Link>
               <Link
                 to="/about"
-                className={`block px-3 py-2.5 rounded-xl text-base font-semibold ${
-                  isActive('/about') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
-                }`}
+                className={`block px-3 py-2.5 rounded-xl text-base font-semibold ${isActive('/about') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
+                  }`}
               >
                 About Us
               </Link>
               <Link
                 to="/contact"
-                className={`block px-3 py-2.5 rounded-xl text-base font-semibold ${
-                  isActive('/contact') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
-                }`}
+                className={`block px-3 py-2.5 rounded-xl text-base font-semibold ${isActive('/contact') ? 'bg-neutral-100 dark:bg-dark-800 text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-900'
+                  }`}
               >
                 Contact & Support
               </Link>

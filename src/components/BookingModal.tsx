@@ -5,8 +5,10 @@ import {
   Navigation,
   Car,
   ArrowRight,
-  Star,
-  Check
+  Radio,
+  Smartphone,
+  ExternalLink,
+  Sparkles
 } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data/mobilityData';
 import confetti from 'canvas-confetti';
@@ -18,71 +20,59 @@ interface BookingModalProps {
 }
 
 export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, initialServiceId = 'city-rides' }) => {
-  const [step, setStep] = useState<'form' | 'bids' | 'confirmed'>('form');
+  const [step, setStep] = useState<'form' | 'redirecting'>('form');
   const [service, setService] = useState<string>(initialServiceId);
   const [pickup, setPickup] = useState('Murtala Muhammed Int. Airport (LOS)');
   const [destination, setDestination] = useState('Victoria Island (Adeola Odeku)');
   const [fareOffer, setFareOffer] = useState<number>(4500);
   const [selectedVehicle, setSelectedVehicle] = useState<'standard' | 'comfort' | 'xl'>('standard');
-  const [selectedDriver, setSelectedDriver] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  // Mock driver bids to demonstrate the negotiation flow
-  const mockBids = [
-    {
-      id: 'driver-1',
-      name: 'Adekunle Olawale',
-      rating: 4.9,
-      trips: 1420,
-      car: 'Toyota Corolla 2021 (Silver)',
-      eta: '4 mins away',
-      bid: fareOffer, // accepted rider's offer!
-      isOfferAccepted: true,
-      avatar: '/images/handsome-elegant-man-car-salon (1).jpg'
-    },
-    {
-      id: 'driver-2',
-      name: 'Chidi Nwosu',
-      rating: 4.8,
-      trips: 980,
-      car: 'Honda Civic 2020 (Black)',
-      eta: '6 mins away',
-      bid: fareOffer + 400, // slight counter offer
-      isOfferAccepted: false,
-      avatar: '/images/bc.jpg'
-    },
-    {
-      id: 'driver-3',
-      name: 'Ibrahim Danladi',
-      rating: 4.95,
-      trips: 2150,
-      car: 'Toyota Camry XLE 2022 (Dark Grey)',
-      eta: '7 mins away',
-      bid: fareOffer + 700,
-      isOfferAccepted: false,
-      avatar: '/images/bb.webp'
+  const getAppRedirectUrl = () => {
+    if (typeof navigator !== 'undefined') {
+      const ua = navigator.userAgent || navigator.vendor || (window as unknown as { opera?: string }).opera || '';
+      if (/iPad|iPhone|iPod/.test(ua) && !(window as unknown as { MSStream?: unknown }).MSStream) {
+        return COMPANY_DETAILS.appStoreUrl;
+      }
+      if (/android/i.test(ua)) {
+        return COMPANY_DETAILS.playStoreUrl;
+      }
     }
-  ];
-
-  const handleProposeFare = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStep('bids');
+    return COMPANY_DETAILS.playStoreUrl;
   };
 
-  const handleSelectDriver = (driverId: string) => {
-    setSelectedDriver(driverId);
-    setStep('confirmed');
+  const handleBroadcastOffer = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStep('redirecting');
+
     try {
       confetti({
-        particleCount: 70,
-        spread: 60,
+        particleCount: 80,
+        spread: 70,
         origin: { y: 0.6 }
       });
     } catch {
       // fallback
     }
+
+    const targetUrl = getAppRedirectUrl();
+
+    // Automatically redirect user to the app
+    const timer = setTimeout(() => {
+      window.location.href = targetUrl;
+    }, 1200);
+
+    return () => clearTimeout(timer);
   };
+
+  const serviceName = service === 'city-rides'
+    ? 'City Ride'
+    : service === 'city-to-city'
+    ? 'City-to-City Interstate'
+    : service === 'courier'
+    ? 'Courier & Delivery'
+    : 'Ride-Sharing';
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-dark-950/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fade-in">
@@ -94,18 +84,16 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
         <div className="px-6 py-4 bg-neutral-900 dark:bg-dark-950 text-white flex items-center justify-between border-b border-neutral-800 dark:border-dark-800">
           <div className="flex items-center space-x-2.5">
             <div className="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-500 flex items-center justify-center">
-              <Car className="w-4 h-4" />
+              {step === 'form' ? <Car className="w-4 h-4" /> : <Radio className="w-4 h-4 text-brand-500 animate-pulse" />}
             </div>
             <div>
               <h3 className="font-extrabold text-base text-white font-display">
-                {step === 'form' && 'Propose Your Ride & Fare'}
-                {step === 'bids' && 'Select Driver & Confirm Bid'}
-                {step === 'confirmed' && 'Ride Confirmed!'}
+                {step === 'form' ? 'Propose Your Ride & Fare' : 'Offer Broadcasted!'}
               </h3>
               <p className="text-[11px] text-neutral-400">
-                {step === 'form' && 'Set what you pay — direct negotiation with drivers'}
-                {step === 'bids' && 'Drivers nearby responded with real offers'}
-                {step === 'confirmed' && 'Driver is en route to your pickup spot'}
+                {step === 'form'
+                  ? 'Set what you pay — direct negotiation with drivers'
+                  : 'Connecting you to nearby drivers in the XLDriv app'}
               </p>
             </div>
           </div>
@@ -121,7 +109,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
         {/* Modal Body */}
         <div className="p-6">
           {step === 'form' && (
-            <form onSubmit={handleProposeFare} className="space-y-4">
+            <form onSubmit={handleBroadcastOffer} className="space-y-4">
               {/* Service Selection */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2">
@@ -266,131 +254,108 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
             </form>
           )}
 
-          {step === 'bids' && (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between bg-emerald-50 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-300 px-4 py-2.5 rounded-xl border border-emerald-200 dark:border-emerald-800 text-xs">
-                <span className="font-semibold">3 verified drivers responded to your ₦{fareOffer.toLocaleString()} offer:</span>
-                <span className="animate-pulse flex h-2 w-2 rounded-full bg-emerald-600 dark:bg-emerald-400" />
-              </div>
-
-              <div className="space-y-3">
-                {mockBids.map((driver) => (
-                  <div
-                    key={driver.id}
-                    className="p-4 rounded-2xl border border-neutral-200 dark:border-dark-800 hover:border-brand-500 dark:hover:border-brand-500/80 hover:bg-neutral-50/50 dark:hover:bg-dark-800/50 transition-all flex items-center justify-between"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 rounded-full overflow-hidden bg-neutral-200 dark:bg-dark-800 shrink-0 border border-neutral-300 dark:border-dark-700">
-                        <img src={driver.avatar} alt={driver.name} className="w-full h-full object-cover" />
-                      </div>
-                      <div>
-                        <div className="flex items-center space-x-2">
-                          <h4 className="font-bold text-sm text-dark-950 dark:text-white">{driver.name}</h4>
-                          <span className="flex items-center text-xs font-semibold text-amber-600 dark:text-amber-400">
-                            <Star className="w-3 h-3 fill-amber-500 text-amber-500 mr-0.5" />
-                            {driver.rating}
-                          </span>
-                        </div>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400">{driver.car}</p>
-                        <span className="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium">{driver.eta} • {driver.trips} trips</span>
-                      </div>
-                    </div>
-
-                    <div className="text-right">
-                      <div className="text-lg font-black text-dark-950 dark:text-brand-400 font-display">
-                        ₦{driver.bid.toLocaleString()}
-                      </div>
-                      {driver.isOfferAccepted ? (
-                        <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-2 py-0.5 rounded-full inline-block mb-1.5 border border-emerald-300/30">
-                          Accepted Your Offer!
-                        </span>
-                      ) : (
-                        <span className="text-[10px] font-semibold text-neutral-500 dark:text-neutral-400 block mb-1.5">
-                          Counter-bid (+₦{(driver.bid - fareOffer).toLocaleString()})
-                        </span>
-                      )}
-                      <button
-                        onClick={() => handleSelectDriver(driver.id)}
-                        className="px-3.5 py-1.5 rounded-xl bg-dark-950 dark:bg-brand-500 text-white dark:text-dark-950 hover:bg-brand-500 dark:hover:bg-brand-400 font-bold text-xs transition-colors"
-                      >
-                        Accept Driver
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setStep('form')}
-                className="w-full py-2.5 text-xs text-neutral-500 dark:text-neutral-400 font-semibold hover:text-dark-950 dark:hover:text-white transition-colors text-center"
-              >
-                ← Edit Route & Offer
-              </button>
-            </div>
-          )}
-
-          {step === 'confirmed' && (
-            <div className="text-center py-6 space-y-5">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto border border-emerald-300/30">
-                <Check className="w-8 h-8" />
+          {step === 'redirecting' && (
+            <div className="text-center py-4 space-y-5 animate-fade-in">
+              {/* Radar Broadcast Pulse */}
+              <div className="relative w-20 h-20 mx-auto flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-brand-500/20 animate-ping" />
+                <div className="absolute inset-2 rounded-full bg-brand-500/30 animate-pulse" />
+                <div className="relative w-14 h-14 rounded-full bg-brand-500 text-dark-950 flex items-center justify-center shadow-lg">
+                  <Radio className="w-7 h-7" />
+                </div>
               </div>
 
               <div>
+                <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 text-xs font-bold mb-2">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Offer Live On XLDriv Network</span>
+                </div>
                 <h3 className="text-2xl font-black text-dark-950 dark:text-white font-display">
-                  Your Ride is Confirmed!
+                  Connecting to Nearby Drivers...
                 </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-300 mt-1 max-w-sm mx-auto">
-                  Your driver has accepted and is navigating to <b className="text-dark-950 dark:text-white">{pickup}</b>.
+                <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 mt-1 max-w-sm mx-auto">
+                  Redirecting you to the XLDriv app to negotiate directly and track your ride in real-time.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-neutral-50 dark:bg-dark-950 border border-neutral-200 dark:border-dark-800 text-left text-xs space-y-1.5 max-w-sm mx-auto">
-                <div className="flex justify-between">
+              {/* Ride Summary Card */}
+              <div className="p-4 rounded-2xl bg-neutral-50 dark:bg-dark-950 border border-neutral-200 dark:border-dark-800 text-left text-xs space-y-2 max-w-md mx-auto shadow-sm">
+                <div className="flex justify-between items-center pb-2 border-b border-neutral-200/80 dark:border-dark-800">
+                  <span className="text-neutral-500 dark:text-neutral-400">Service:</span>
+                  <span className="font-bold text-dark-950 dark:text-white uppercase tracking-wider text-[11px] bg-brand-500/20 text-brand-800 dark:text-brand-300 px-2 py-0.5 rounded">
+                    {serviceName}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
                   <span className="text-neutral-500 dark:text-neutral-400">Pickup:</span>
-                  <span className="font-semibold text-dark-950 dark:text-white">{pickup}</span>
+                  <span className="font-semibold text-dark-950 dark:text-white text-right truncate max-w-[240px]">
+                    {pickup}
+                  </span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <span className="text-neutral-500 dark:text-neutral-400">Destination:</span>
-                  <span className="font-semibold text-dark-950 dark:text-white">{destination}</span>
+                  <span className="font-semibold text-dark-950 dark:text-white text-right truncate max-w-[240px]">
+                    {destination}
+                  </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-neutral-500 dark:text-neutral-400">Agreed Fare:</span>
-                  <span className="font-bold text-emerald-700 dark:text-emerald-400 text-sm">₦{fareOffer.toLocaleString()}</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-neutral-500 dark:text-neutral-400">Vehicle Class:</span>
+                  <span className="font-semibold text-dark-950 dark:text-white capitalize">
+                    {selectedVehicle}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center pt-2 border-t border-neutral-200/80 dark:border-dark-800">
+                  <span className="font-bold text-dark-950 dark:text-white">Your Proposed Fare:</span>
+                  <span className="font-black text-emerald-700 dark:text-emerald-400 text-base">
+                    ₦{fareOffer.toLocaleString()}
+                  </span>
                 </div>
               </div>
 
-              {/* Direct App Link */}
-              <div className="space-y-3 pt-2">
-                <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                  Track live GPS location on your smartphone:
-                </p>
-                <div className="flex justify-center space-x-3">
+              {/* Action Buttons & Manual Fallbacks */}
+              <div className="space-y-2.5 max-w-md mx-auto pt-1">
+                <a
+                  href={getAppRedirectUrl()}
+                  className="w-full py-3.5 rounded-2xl bg-dark-950 dark:bg-brand-500 hover:bg-black dark:hover:bg-brand-400 text-white dark:text-dark-950 font-bold text-sm flex items-center justify-center space-x-2 shadow-lg transition-transform hover:scale-[1.01] active:scale-[0.99]"
+                >
+                  <Smartphone className="w-4 h-4" />
+                  <span>Open XLDriv App Now</span>
+                  <ExternalLink className="w-4 h-4 ml-1" />
+                </a>
+
+                <div className="grid grid-cols-2 gap-2 pt-1">
                   <a
                     href={COMPANY_DETAILS.playStoreUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2.5 rounded-xl bg-dark-950 dark:bg-brand-500 text-white dark:text-dark-950 font-bold text-xs flex items-center space-x-2"
+                    className="px-3 py-2.5 rounded-xl border border-neutral-300 dark:border-dark-700 text-dark-950 dark:text-white hover:bg-neutral-50 dark:hover:bg-dark-800 font-semibold text-xs flex items-center justify-center space-x-1.5 transition-colors"
                   >
-                    <span>Open in Play Store</span>
+                    <span>Google Play</span>
                   </a>
                   <a
                     href={COMPANY_DETAILS.appStoreUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-dark-700 text-dark-950 dark:text-white hover:bg-neutral-50 dark:hover:bg-dark-800 font-bold text-xs flex items-center space-x-2"
+                    className="px-3 py-2.5 rounded-xl border border-neutral-300 dark:border-dark-700 text-dark-950 dark:text-white hover:bg-neutral-50 dark:hover:bg-dark-800 font-semibold text-xs flex items-center justify-center space-x-1.5 transition-colors"
                   >
-                    <span>Open in App Store</span>
+                    <span>App Store</span>
                   </a>
                 </div>
-              </div>
 
-              <button
-                onClick={onClose}
-                className="text-xs text-neutral-400 hover:text-dark-950 dark:hover:text-white font-semibold underline pt-2"
-              >
-                Close and return to website
-              </button>
+                <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
+                  Automatic redirecting... If your app or store doesn’t open, tap the button above.
+                </p>
+
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setStep('form')}
+                    className="text-xs text-neutral-500 hover:text-dark-950 dark:hover:text-white font-medium underline transition-colors"
+                  >
+                    ← Edit Ride Route or Fare
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>

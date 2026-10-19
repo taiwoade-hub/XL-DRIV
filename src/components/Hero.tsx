@@ -53,7 +53,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenDriverModal }) 
               </button>
 
               <button
-                onClick={onOpenDriverModal ? onOpenDriverModal : () => window.location.href = '/for-drivers'}
+                onClick={onOpenDriverModal ? onOpenDriverModal : () => window.location.href = `${import.meta.env.BASE_URL}for-drivers`}
                 className="px-7 py-4 rounded-2xl border-2 border-dark-950 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-dark-900 text-dark-950 dark:text-white font-bold text-base transition-all flex items-center justify-center space-x-2"
               >
                 <span>Drive with XLDriv</span>

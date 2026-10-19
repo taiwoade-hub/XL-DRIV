@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  Clock, 
-  Zap, 
-  ShieldCheck, 
+import {
+  Clock,
+  Zap,
+  ShieldCheck,
   ArrowRight,
   Sparkles,
   Award
@@ -17,7 +17,7 @@ export const DriverSection: React.FC<DriverSectionProps> = ({ onOpenDriverModal 
   return (
     <section id="for-drivers" className="py-24 bg-white dark:bg-dark-950 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header Intro */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 dark:bg-brand-500/20 text-brand-700 dark:text-brand-400 text-xs font-bold uppercase tracking-wider mb-4">
@@ -35,10 +35,10 @@ export const DriverSection: React.FC<DriverSectionProps> = ({ onOpenDriverModal 
 
         {/* 2-Column Grid: Benefits + Interactive Calculator */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Column: Driver Value Props */}
           <div className="lg:col-span-5 space-y-6">
-            
+
             {/* Benefit Card 1 */}
             <div className="p-5 rounded-2xl bg-neutral-50 dark:bg-dark-900 border border-neutral-200/80 dark:border-dark-800 hover:border-brand-500/50 hover:bg-brand-50/20 dark:hover:bg-dark-850 transition-all group">
               <div className="flex items-start">
