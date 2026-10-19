@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenDriverModal }) 
             <div className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-neutral-100 to-neutral-200/50 dark:from-dark-900 dark:to-dark-800 p-3 shadow-xl border border-neutral-200/60 dark:border-dark-800 mb-6 lg:mb-0">
               <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden bg-neutral-900 group">
                 <img
-                  src="/images/bb.webp"
+                  src={`${import.meta.env.BASE_URL}images/bb.webp`}
                   alt="XLDriv Premium Vehicle"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />

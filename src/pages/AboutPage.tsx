@@ -77,7 +77,7 @@ export const AboutPage: React.FC = () => {
           <div className="lg:col-span-6">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-dark-800">
               <img
-                src="/images/handsome-elegant-man-car-salon (1).jpg"
+                src={`${import.meta.env.BASE_URL}images/handsome-elegant-man-car-salon (1).jpg`}
                 alt="XLDriv Premium Driver & Vehicle"
                 className="w-full h-[450px] object-cover"
               />

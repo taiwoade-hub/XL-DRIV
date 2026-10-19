@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  X, 
-  MapPin, 
-  Navigation, 
-  Car, 
+import {
+  X,
+  MapPin,
+  Navigation,
+  Car,
   ArrowRight,
   Star,
   Check
@@ -86,7 +86,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-dark-950/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fade-in">
-      <div 
+      <div
         className="bg-white dark:bg-dark-900 rounded-3xl max-w-xl w-full shadow-2xl border border-neutral-100 dark:border-dark-800 overflow-hidden relative transition-colors duration-300"
         onClick={(e) => e.stopPropagation()}
       >
@@ -131,33 +131,30 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
                   <button
                     type="button"
                     onClick={() => { setService('city-rides'); setFareOffer(4500); }}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all ${
-                      service === 'city-rides'
+                    className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all ${service === 'city-rides'
                         ? 'border-dark-950 dark:border-brand-500 bg-dark-950 dark:bg-brand-500 text-white dark:text-dark-950'
                         : 'border-neutral-200 dark:border-dark-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-800'
-                    }`}
+                      }`}
                   >
                     City Ride
                   </button>
                   <button
                     type="button"
                     onClick={() => { setService('city-to-city'); setFareOffer(18000); }}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all ${
-                      service === 'city-to-city'
+                    className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all ${service === 'city-to-city'
                         ? 'border-dark-950 dark:border-brand-500 bg-dark-950 dark:bg-brand-500 text-white dark:text-dark-950'
                         : 'border-neutral-200 dark:border-dark-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-800'
-                    }`}
+                      }`}
                   >
                     Interstate
                   </button>
                   <button
                     type="button"
                     onClick={() => { setService('courier'); setFareOffer(3000); }}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all ${
-                      service === 'courier'
+                    className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all ${service === 'courier'
                         ? 'border-dark-950 dark:border-brand-500 bg-dark-950 dark:bg-brand-500 text-white dark:text-dark-950'
                         : 'border-neutral-200 dark:border-dark-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-dark-800'
-                    }`}
+                      }`}
                   >
                     Courier
                   </button>
@@ -207,33 +204,30 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
                 <div className="grid grid-cols-3 gap-2">
                   <div
                     onClick={() => setSelectedVehicle('standard')}
-                    className={`p-2.5 rounded-xl border text-center cursor-pointer transition-all ${
-                      selectedVehicle === 'standard' 
-                        ? 'border-brand-500 bg-brand-500/10' 
+                    className={`p-2.5 rounded-xl border text-center cursor-pointer transition-all ${selectedVehicle === 'standard'
+                        ? 'border-brand-500 bg-brand-500/10'
                         : 'border-neutral-200 dark:border-dark-800 hover:bg-neutral-50 dark:hover:bg-dark-800'
-                    }`}
+                      }`}
                   >
                     <div className="font-bold text-xs text-dark-950 dark:text-white">Standard</div>
                     <div className="text-[10px] text-neutral-500 dark:text-neutral-400">4 Seats • AC</div>
                   </div>
                   <div
                     onClick={() => setSelectedVehicle('comfort')}
-                    className={`p-2.5 rounded-xl border text-center cursor-pointer transition-all ${
-                      selectedVehicle === 'comfort' 
-                        ? 'border-brand-500 bg-brand-500/10' 
+                    className={`p-2.5 rounded-xl border text-center cursor-pointer transition-all ${selectedVehicle === 'comfort'
+                        ? 'border-brand-500 bg-brand-500/10'
                         : 'border-neutral-200 dark:border-dark-800 hover:bg-neutral-50 dark:hover:bg-dark-800'
-                    }`}
+                      }`}
                   >
                     <div className="font-bold text-xs text-dark-950 dark:text-white">Comfort</div>
                     <div className="text-[10px] text-neutral-500 dark:text-neutral-400">Executive Sedan</div>
                   </div>
                   <div
                     onClick={() => setSelectedVehicle('xl')}
-                    className={`p-2.5 rounded-xl border text-center cursor-pointer transition-all ${
-                      selectedVehicle === 'xl' 
-                        ? 'border-brand-500 bg-brand-500/10' 
+                    className={`p-2.5 rounded-xl border text-center cursor-pointer transition-all ${selectedVehicle === 'xl'
+                        ? 'border-brand-500 bg-brand-500/10'
                         : 'border-neutral-200 dark:border-dark-800 hover:bg-neutral-50 dark:hover:bg-dark-800'
-                    }`}
+                      }`}
                   >
                     <div className="font-bold text-xs text-dark-950 dark:text-white">XL 6-Seater</div>
                     <div className="text-[10px] text-neutral-500 dark:text-neutral-400">SUV / Group</div>

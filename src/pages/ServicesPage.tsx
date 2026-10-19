@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Car, 
-  Compass, 
-  Users, 
-  Package, 
-  Truck, 
-  CheckCircle2, 
-  ArrowRight, 
-  Sliders, 
-  ShieldCheck, 
+import {
+  Car,
+  Compass,
+  Users,
+  Package,
+  Truck,
+  CheckCircle2,
+  ArrowRight,
+  Sliders,
+  ShieldCheck,
   Sparkles,
   PhoneCall
 } from 'lucide-react';
@@ -67,21 +67,20 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenBooking, onSel
         {SERVICES.map((service, index) => {
           const isReversed = index % 2 !== 0;
           return (
-            <div 
-              key={service.id} 
+            <div
+              key={service.id}
               id={service.id}
-              className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${
-                isReversed ? 'lg:flex-row-reverse' : ''
-              }`}
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${isReversed ? 'lg:flex-row-reverse' : ''
+                }`}
             >
               {/* Media Column */}
               <div className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}>
                 <div className="relative rounded-3xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-100 dark:border-dark-800 group">
                   <div className="h-72 sm:h-96 w-full overflow-hidden">
-                    <img 
-                      src={service.image} 
+                    <img
+                      src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent" />
@@ -148,7 +147,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenBooking, onSel
       {/* Special Showcase: Clearing, Forwarding & Logistics Section */}
       <section className="bg-neutral-900 text-white py-20 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="text-xs font-bold text-brand-500 uppercase tracking-widest">
               Industrial Division
@@ -164,14 +163,14 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenBooking, onSel
           {/* Clearing Visual Gallery */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
             {clearingGallery.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="group relative rounded-2xl overflow-hidden bg-neutral-800 border border-neutral-700/80 shadow-md h-40"
               >
-                <img 
-                  src={item.src} 
+                <img
+                  src={item.src}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2.5">
                   <span className="text-[11px] font-bold text-neutral-200 line-clamp-2 leading-tight">
