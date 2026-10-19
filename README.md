@@ -150,6 +150,31 @@ npm run preview
 
 ---
 
+## 🚀 GitHub Pages & Custom Domain Deployment
+
+This repository includes automated CI/CD deployment via GitHub Actions (`.github/workflows/deploy.yml`), client-side SPA routing fallback (`404.html`), `.nojekyll` bypass, search engine sitemap, and custom domain `CNAME`.
+
+### 1. Enable GitHub Pages in Repository Settings
+1. Go to your repository on GitHub: **[taiwoade-hub/XL-DRIV](https://github.com/taiwoade-hub/XL-DRIV)**.
+2. Click **Settings** > **Pages** (in the left sidebar).
+3. Under **Build and deployment** > **Source**, choose **GitHub Actions**.
+4. Push your changes to the `main` branch. The action will automatically build and deploy the site!
+
+### 2. Configure Custom Domain (`xldriv.com`)
+1. In **Settings** > **Pages** > **Custom domain**, verify that `xldriv.com` is entered and click **Save**.
+2. Check the box **Enforce HTTPS** once DNS resolution completes and certificate issues.
+3. Configure your DNS provider (Namecheap, GoDaddy, Cloudflare, etc.) with GitHub Pages DNS records:
+   - **Apex Domain (`xldriv.com`) A Records**:
+     - `185.199.108.153`
+     - `185.199.109.153`
+     - `185.199.110.153`
+     - `185.199.111.153`
+   - **Subdomain (`www.xldriv.com`) CNAME Record**:
+     - Host: `www`
+     - Target / Value: `taiwoade-hub.github.io.`
+
+---
+
 ## 🎨 Design System & Palette
 
 - **Brand Gold / Amber**: `#F7B401` (`brand-500`) — Primary accent, active bids, highlights.
