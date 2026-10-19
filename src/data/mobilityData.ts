@@ -60,7 +60,7 @@ export const SERVICES: ServiceItem[] = [
       'Popular routes: Lagos ↔ Ibadan, Lagos ↔ Benin, Abuja ↔ Kaduna'
     ],
     idealFor: 'Interstate business, family visits, weekend getaways',
-    image: `${base}images/city-to-city.jpg`,
+    image: `${base}images/city-to-city.webp`,
     startingPrice: 'Negotiate custom interstate rate'
   },
   {
@@ -76,7 +76,7 @@ export const SERVICES: ServiceItem[] = [
       'Reduced congestion along busy expressways'
     ],
     idealFor: 'Mainland-to-Island daily commuters, cost-conscious riders',
-    image: `${base}images/bc.jpg`,
+    image: `${base}images/bc.webp`,
     startingPrice: 'Up to 50% savings'
   },
   {
@@ -92,7 +92,7 @@ export const SERVICES: ServiceItem[] = [
       'Motorcycle, car, or van dispatch based on package size'
     ],
     idealFor: 'E-commerce vendors, urgent documents, gifts, medicines',
-    image: `${base}images/invest-card1.jpeg`,
+    image: `${base}images/invest-card1.webp`,
     startingPrice: 'Negotiated per distance & parcel weight'
   },
   {
@@ -108,7 +108,7 @@ export const SERVICES: ServiceItem[] = [
       'Dedicated corporate logistics account management'
     ],
     idealFor: 'Importers, manufacturers, distributors, construction firms',
-    image: `${base}images/cl2.png`,
+    image: `${base}images/cl2.webp`,
     startingPrice: 'Enterprise logistics quotes'
   }
 ];

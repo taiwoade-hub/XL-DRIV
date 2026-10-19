@@ -77,8 +77,10 @@ export const AboutPage: React.FC = () => {
           <div className="lg:col-span-6">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-dark-800">
               <img
-                src={`${import.meta.env.BASE_URL}images/handsome-elegant-man-car-salon (1).jpg`}
+                src={`${import.meta.env.BASE_URL}images/handsome-elegant-man-car-salon (1).webp`}
                 alt="XLDriv Premium Driver & Vehicle"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-[450px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent flex items-end p-8 text-white">

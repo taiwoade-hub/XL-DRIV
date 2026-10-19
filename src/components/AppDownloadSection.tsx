@@ -115,8 +115,10 @@ export const AppDownloadSection: React.FC = () => {
             <div className="relative max-w-sm w-full">
               <div className="absolute inset-0 bg-brand-500/20 blur-3xl rounded-full transform -rotate-6" />
               <img
-                src={`${import.meta.env.BASE_URL}images/appDisImg.png`}
+                src={`${import.meta.env.BASE_URL}images/appDisImg.webp`}
                 alt="XLDriv Mobile Application Interface"
+                loading="lazy"
+                decoding="async"
                 className="relative z-10 w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>

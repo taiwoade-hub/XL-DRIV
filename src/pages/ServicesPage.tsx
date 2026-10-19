@@ -30,12 +30,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenBooking, onSel
   const [quoteSent, setQuoteSent] = useState(false);
 
   const clearingGallery = [
-    { src: `${import.meta.env.BASE_URL}images/cl2.png`, title: 'Port Clearance Documentation' },
-    { src: `${import.meta.env.BASE_URL}images/cl3.png`, title: 'Container Haulage Trucks' },
-    { src: `${import.meta.env.BASE_URL}images/cl4.png`, title: 'Heavy Cargo Inspection' },
-    { src: `${import.meta.env.BASE_URL}images/cl5.png`, title: 'End-to-End Warehousing' },
-    { src: `${import.meta.env.BASE_URL}images/cl6.png`, title: 'Industrial Transport' },
-    { src: `${import.meta.env.BASE_URL}images/cl7.png`, title: 'Fleet Logistics Coordination' }
+    { src: `${import.meta.env.BASE_URL}images/cl2.webp`, title: 'Port Clearance Documentation' },
+    { src: `${import.meta.env.BASE_URL}images/cl3.webp`, title: 'Container Haulage Trucks' },
+    { src: `${import.meta.env.BASE_URL}images/cl4.webp`, title: 'Heavy Cargo Inspection' },
+    { src: `${import.meta.env.BASE_URL}images/cl5.webp`, title: 'End-to-End Warehousing' },
+    { src: `${import.meta.env.BASE_URL}images/cl6.webp`, title: 'Industrial Transport' },
+    { src: `${import.meta.env.BASE_URL}images/cl7.webp`, title: 'Fleet Logistics Coordination' }
   ];
 
   const handleQuoteSubmit = (e: React.FormEvent) => {
@@ -80,6 +80,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenBooking, onSel
                     <img
                       src={service.image}
                       alt={service.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
@@ -170,6 +172,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenBooking, onSel
                 <img
                   src={item.src}
                   alt={item.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2.5">

@@ -32,6 +32,8 @@ export const Footer: React.FC = () => {
                 <img 
                   src={`${import.meta.env.BASE_URL}logo.png`} 
                   alt="XL Driv Official Logo" 
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain"
                 />
               </div>

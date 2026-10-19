@@ -86,6 +86,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
               <img
                 src={`${import.meta.env.BASE_URL}logo.png`}
                 alt="XL Driv Official Logo"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
                 className="w-full h-full object-contain"
               />
             </div>
