@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenDriverModal }) 
 
             {/* Sub-headline */}
             <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed max-w-xl text-balance">
-              Book a ride, set your fare, and connect with drivers who get you moving. From everyday trips to long-distance journeys, XLDriv makes every trip simpler.
+              Book a ride, set your fare, and connect with drivers who get you moving. From everyday trips to long-distance journeys, XLDriv makes every trip simpler. We also provide trusted, end-to-end <strong className="font-bold text-dark-950 dark:text-white">Clearing &amp; Forwarding</strong> and nationwide <strong className="font-bold text-dark-950 dark:text-white">Trucking Logistics</strong> to keep your business cargo moving seamlessly.
             </p>
 
             {/* Action Buttons */}

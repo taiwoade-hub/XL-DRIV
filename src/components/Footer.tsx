@@ -107,8 +107,8 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services#city-to-city" className="hover:text-brand-400 transition-colors">
-                  City-to-City (Interstate)
+                <Link to="/services#trucks-logistics" className="hover:text-brand-400 transition-colors">
+                  Clearing & Forwarding / Trucking
                 </Link>
               </li>
               <li>
@@ -122,8 +122,8 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services#trucks-logistics" className="hover:text-brand-400 transition-colors">
-                  Trucks & Freight Clearing
+                <Link to="/services#city-to-city" className="hover:text-brand-400 transition-colors">
+                  City-to-City (Interstate)
                 </Link>
               </li>
             </ul>

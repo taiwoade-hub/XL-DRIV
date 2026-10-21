@@ -77,7 +77,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                     alt={service.title}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    className={`w-full h-full object-cover ${service.imagePosition || 'object-center'} group-hover:scale-105 transition-transform duration-700`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-dark-950/20 to-transparent" />
                   
@@ -95,7 +95,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                     <p className="text-xs uppercase font-bold tracking-wider text-brand-400 mb-1">
                       {service.tagline}
                     </p>
-                    <h3 className="text-2xl font-extrabold text-white font-display">
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-white font-display leading-tight">
                       {service.title}
                     </h3>
                   </div>

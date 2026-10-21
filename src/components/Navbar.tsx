@@ -152,15 +152,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
                   </Link>
 
                   <Link
-                    to="/services#city-to-city"
+                    to="/services#trucks-logistics"
                     className="flex items-start p-2.5 rounded-xl hover:bg-neutral-50 dark:hover:bg-dark-800 transition-colors group"
                   >
                     <div className="w-9 h-9 rounded-lg bg-neutral-100 dark:bg-dark-800 text-dark-900 dark:text-white flex items-center justify-center mr-3 mt-0.5 group-hover:bg-dark-950 group-hover:text-white transition-colors">
-                      <ShieldCheck className="w-5 h-5" />
+                      <Truck className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-dark-900 dark:text-white group-hover:text-brand-600 transition-colors">City-to-City</p>
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400">Door-to-door interstate travel</p>
+                      <p className="text-sm font-bold text-dark-900 dark:text-white group-hover:text-brand-600 transition-colors">Clearing & Forwarding / Trucking</p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400">Port clearing & heavy freight</p>
                     </div>
                   </Link>
 
@@ -178,15 +178,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenDriverModal
                   </Link>
 
                   <Link
-                    to="/services#trucks-logistics"
+                    to="/services#city-to-city"
                     className="flex items-start p-2.5 rounded-xl hover:bg-neutral-50 dark:hover:bg-dark-800 transition-colors group"
                   >
                     <div className="w-9 h-9 rounded-lg bg-neutral-100 dark:bg-dark-800 text-dark-900 dark:text-white flex items-center justify-center mr-3 mt-0.5 group-hover:bg-dark-950 group-hover:text-white transition-colors">
-                      <Truck className="w-5 h-5" />
+                      <ShieldCheck className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-dark-900 dark:text-white group-hover:text-brand-600 transition-colors">Trucks & Forwarding</p>
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400">Port clearing & heavy freight</p>
+                      <p className="text-sm font-bold text-dark-900 dark:text-white group-hover:text-brand-600 transition-colors">City-to-City</p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400">Door-to-door interstate travel</p>
                     </div>
                   </Link>
 

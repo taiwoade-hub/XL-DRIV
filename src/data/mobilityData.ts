@@ -7,6 +7,7 @@ export interface ServiceItem {
   features: string[];
   idealFor: string;
   image: string;
+  imagePosition?: string;
   startingPrice: string;
 }
 
@@ -48,20 +49,20 @@ export const SERVICES: ServiceItem[] = [
     startingPrice: 'Propose your fare'
   },
   {
-    id: 'city-to-city',
-    title: 'City-to-City',
-    badge: 'Interstate Mobility',
-    tagline: 'Comfortable cross-country & intercity journeys',
-    description: 'Travel between states across Nigeria without crowded motor parks. Enjoy door-to-door comfort, verified drivers, air-conditioned vehicles, and pre-agreed flat fares.',
+    id: 'trucks-logistics',
+    title: 'XLDriv Clearing and Forwarding / Trucking Logistics',
+    badge: 'Industrial Logistics',
+    tagline: 'Heavy freight, container haulage & custom clearance',
+    description: 'Full-spectrum supply chain and logistics solutions. From container haulage at Apapa and Tin Can ports to cross-country industrial freight and custom clearing services.',
     features: [
-      'Direct doorstep pickup and drop-off',
-      'Verified interstate drivers with highway certification',
-      'Spacious luggage capacity for interstate travel',
-      'Popular routes: Lagos ↔ Ibadan, Lagos ↔ Benin, Abuja ↔ Kaduna'
+      'Container haulage, flatbeds, and heavy-duty trucks',
+      'Customs clearing and freight forwarding documentation',
+      'End-to-end warehousing and distribution support',
+      'Dedicated corporate logistics account management'
     ],
-    idealFor: 'Interstate business, family visits, weekend getaways',
-    image: `${base}images/city-to-city.webp`,
-    startingPrice: 'Negotiate custom interstate rate'
+    idealFor: 'Importers, manufacturers, distributors, construction firms',
+    image: `${base}images/truck-clearing.webp`,
+    startingPrice: 'Enterprise logistics quotes'
   },
   {
     id: 'ride-sharing',
@@ -92,24 +93,25 @@ export const SERVICES: ServiceItem[] = [
       'Motorcycle, car, or van dispatch based on package size'
     ],
     idealFor: 'E-commerce vendors, urgent documents, gifts, medicines',
-    image: `${base}images/invest-card1.webp`,
+    image: `${base}images/courier-delivery.webp`,
+    imagePosition: 'object-[center_28%]',
     startingPrice: 'Negotiated per distance & parcel weight'
   },
   {
-    id: 'trucks-logistics',
-    title: 'Trucks, Clearing & Forwarding',
-    badge: 'Industrial Logistics',
-    tagline: 'Heavy freight, container haulage & custom clearance',
-    description: 'Full-spectrum supply chain and logistics solutions. From container haulage at Apapa and Tin Can ports to cross-country industrial freight and custom clearing services.',
+    id: 'city-to-city',
+    title: 'City-to-City',
+    badge: 'Interstate Mobility',
+    tagline: 'Comfortable cross-country & intercity journeys',
+    description: 'Travel between states across Nigeria without crowded motor parks. Enjoy door-to-door comfort, verified drivers, air-conditioned vehicles, and pre-agreed flat fares.',
     features: [
-      'Container haulage, flatbeds, and heavy-duty trucks',
-      'Customs clearing and freight forwarding documentation',
-      'End-to-end warehousing and distribution support',
-      'Dedicated corporate logistics account management'
+      'Direct doorstep pickup and drop-off',
+      'Verified interstate drivers with highway certification',
+      'Spacious luggage capacity for interstate travel',
+      'Popular routes: Lagos ↔ Ibadan, Lagos ↔ Benin, Abuja ↔ Kaduna'
     ],
-    idealFor: 'Importers, manufacturers, distributors, construction firms',
-    image: `${base}images/cl2.webp`,
-    startingPrice: 'Enterprise logistics quotes'
+    idealFor: 'Interstate business, family visits, weekend getaways',
+    image: `${base}images/city-to-city.webp`,
+    startingPrice: 'Negotiate custom interstate rate'
   }
 ];
 
