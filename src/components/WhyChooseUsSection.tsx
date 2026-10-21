@@ -55,7 +55,7 @@ export const WhyChooseUsSection: React.FC = () => {
             <span>Why Riders & Drivers Choose Us</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-dark-950 dark:text-white font-display tracking-tight">
-            "Every Road , Every journey, Africa" <br />
+            "Every Road , Every journey,  For Africa" <br />
             <span className="text-brand-600 dark:text-brand-500">Engineered for fairness.</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400">
