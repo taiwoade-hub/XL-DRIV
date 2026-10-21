@@ -129,7 +129,7 @@ export const ContactPage: React.FC = () => {
               {/* Direct WhatsApp Action */}
               <div className="pt-4 border-t border-neutral-800">
                 <a
-                  href={`https://wa.me/2349115641088?text=Hello%20XLDriv%20Support,%20I%20need%20assistance.`}
+                  href={COMPANY_DETAILS.whatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center space-x-2 transition-colors shadow-md"

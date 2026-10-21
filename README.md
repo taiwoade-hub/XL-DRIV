@@ -190,7 +190,7 @@ This repository includes automated CI/CD deployment via GitHub Actions (`.github
 
 - **Operating Entity**: XL-Driv Mobility Technologies Limited
 - **Head Office**: 27, Raji Oba Street, Egbeda, Lagos State, Nigeria
-- **Primary Support Hotline**: +234 911 564 1088
+- **Primary Support Hotline**: +234 913 827 2891 (09138272891)
 - **Secondary Contact**: +234 706 814 8526
 - **Email Inquiries**: [info@xldriv.com](mailto:info@xldriv.com) | [support@xldriv.com](mailto:support@xldriv.com)
 - **Google Play Store**: [XLDriver & XLDriv on Android](https://play.google.com/store/apps)
