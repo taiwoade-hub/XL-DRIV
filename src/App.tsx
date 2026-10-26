@@ -86,6 +86,14 @@ const MainLayout: React.FC = () => {
             element={<PrivacyPage />} 
           />
           <Route 
+            path="/privacy_policy" 
+            element={<PrivacyPage />} 
+          />
+          <Route 
+            path="/privacy-policy" 
+            element={<PrivacyPage />} 
+          />
+          <Route 
             path="/safety" 
             element={<SafetyPage />} 
           />
@@ -96,6 +104,17 @@ const MainLayout: React.FC = () => {
           <Route 
             path="/delete-account" 
             element={<DeleteAccountPage />} 
+          />
+          {/* Fallback to Home for unknown routes */}
+          <Route 
+            path="*" 
+            element={
+              <HomePage 
+                onOpenBooking={() => handleOpenBooking('city-rides')}
+                onOpenDriverModal={() => setIsDriverModalOpen(true)}
+                onSelectServiceForBooking={(id) => handleOpenBooking(id)}
+              />
+            } 
           />
         </Routes>
       </div>

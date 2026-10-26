@@ -162,7 +162,7 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="hover:text-brand-400 transition-colors">
+                <Link to="/privacy_policy" className="hover:text-brand-400 transition-colors">
                   Privacy Policy (NDPR)
                 </Link>
               </li>
@@ -265,7 +265,7 @@ export const Footer: React.FC = () => {
             <span>•</span>
             <Link to="/terms" className="hover:text-neutral-300">Terms</Link>
             <span>•</span>
-            <Link to="/privacy" className="hover:text-neutral-300">Privacy</Link>
+            <Link to="/privacy_policy" className="hover:text-neutral-300">Privacy</Link>
           </div>
         </div>
 

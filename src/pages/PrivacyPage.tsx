@@ -1,9 +1,17 @@
-import React from 'react';
-import { ArrowLeft, ShieldCheck, Lock } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { COMPANY_DETAILS } from '../data/mobilityData';
 
 export const PrivacyPage: React.FC = () => {
+  useEffect(() => {
+    document.title = "Privacy Policy (NDPR) | XLDriv — Move On Your Terms";
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', 'https://xldriv.com/privacy_policy');
+    }
+  }, []);
+
   return (
     <div className="pt-28 pb-20 bg-white dark:bg-dark-950 transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
